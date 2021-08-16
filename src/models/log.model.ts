@@ -4,34 +4,20 @@ export class Log extends Entity {
     /**
      * Log tarihi
      */
-    private _date : Date;
-    public get date() : Date {
-        return this._date;
-    }
-    public set date(v : Date) {
-        this._date = v;
-    }
-    
+    date : Date;
     /**
      * Log içeriği
      */
-    private _content : string;
-    public get content() : string {
-        return this._content;
-    }
-    public set content(v : string) {
-        this._content = v;
-    }
-    
+    content : string;
     /**
      * İşlem yapan kullanıcı
      */
-    private _user : string;
-    public get user() : string {
-        return this._user;
+    user : object;
+
+    constructor(id: string, date: Date, content: string, user: object){
+        super(id);
+        this.date = date;
+        this.content = content;
+        this.user = user;
     }
-    public set user(v : string) {
-        this._user = v;
-    }
-    
 }

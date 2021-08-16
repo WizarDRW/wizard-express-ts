@@ -1,35 +1,38 @@
-import { Request, Response } from 'express'
-import { Log } from '../../models/log.model';
-import {iLogService} from '../abstract/iLog.controller'
-import {iLogDal} from '../../data-access/abstract/iLog.dal'
+import { Request, Response, NextFunction } from "express";
+import { Log } from "../../models/log.model";
+import { iLogService } from "../abstract/iLog.controller";
+import { iLogDal } from "../../data-access/abstract/iLog.dal";
 
-export class LogController implements iLogService{
-    private static instance: LogController;
+export class LogController implements iLogService {
+  private static instance: LogController;
 
-    private constructor(private readonly logdal: iLogDal) {}
+  private constructor(private readonly logdal: iLogDal) {}
 
-    public static getInstance(logdal: iLogDal): LogController{
-        if(!LogController.instance)
-            LogController.instance = new LogController(logdal);
-        
-        return LogController.instance;
-    }
+  public static getInstance(logdal: iLogDal): LogController {
+    if (!LogController.instance)
+      LogController.instance = new LogController(logdal);
 
-    getAll(req: any, res: any, next: any): Log[] {
-        throw new Error('Method not implemented.');
-    }
-    get(req: Request, res: Response, next: any): any {
-        const result: Log = new Log();
-        result.content = this.logdal.get('','')
-        return res.send(result)
-    }
-    add(req: any, res: any): Log {
-        throw new Error('Method not implemented.');
-    }
-    update(req: any, res: any): Log {
-        throw new Error('Method not implemented.');
-    }
-    delete(req: any, res: any): string {
-        throw new Error('Method not implemented.');
-    }
+    return LogController.instance;
+  }
+
+  getAll(req: Request, res: Response, next: NextFunction): Log[] {
+    throw new Error("Method not implemented.");
+  }
+  get(req: Request, res: Response, next: NextFunction): Log {
+    const result: Log = new Log("1", new Date(), "", {
+      name: "Burak",
+      surname: "Ozkara",
+    });
+    result.content = this.logdal.get("", "");
+    return result;
+  }
+  add(req: Request, res: Response): Log {
+    throw new Error("Method not implemented.");
+  }
+  update(req: Request, res: Response): Log {
+    throw new Error("Method not implemented.");
+  }
+  delete(req: Request, res: Response): string {
+    throw new Error("Method not implemented.");
+  }
 }

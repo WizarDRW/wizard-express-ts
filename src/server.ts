@@ -1,13 +1,24 @@
 import express from 'express'
-import route from './routers/router'
+import * as http from 'http';
+import {CommonRouterConfig} from './routers/common'
+import {LogRouter} from './routers/log.router'
+import debug from 'debug';
+
+const app: express.Application = express();
+const server: http.Server = http.createServer(app);
+const port = 3000;
+const routes: Array<CommonRouterConfig> = [];
+const debugLog: debug.IDebugger = debug('app');
 
 
-const app = express();
+app.use(express.json());
+
+routes.push(new LogRouter(app));
 
 
-app.use('/', route)
-
-
-app.listen(3000, '127.0.0.1', () => {
-    console.log(`🚀 Server running on port ${3000}!`)
+server.listen(port, () => {
+    routes.forEach((route: CommonRouterConfig) => {
+        debugLog(`Routes configured for ${route.getName()}`);
+    });
+    console.log(`🚀 Server running on port ${port}!`)
 });
