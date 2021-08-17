@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { Log } from "../../models/log.model";
 import { iLogService } from "../abstract/iLog.controller";
-import { iLogDal } from "../../data-access/abstract/iLog.dal";
+import { iLogDal } from "../../data-access/sql/abstract/iLog.dal";
 
 export class LogController implements iLogService {
   private static instance: LogController;
@@ -19,11 +19,11 @@ export class LogController implements iLogService {
     throw new Error("Method not implemented.");
   }
   get(req: Request, res: Response, next: NextFunction): Log {
-    const result: Log = new Log("1", new Date(), "", {
+    var result: Log = new Log("1", new Date(), "", {
       name: "Burak",
       surname: "Ozkara",
     });
-    result.content = this.logdal.get("", "");
+    result = this.logdal.get("", "");
     return result;
   }
   add(req: Request, res: Response): Log {

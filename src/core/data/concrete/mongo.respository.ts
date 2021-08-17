@@ -1,21 +1,29 @@
+import { MongoContext } from "../../context/mongo.context";
 import { iEntity } from "../../entity/abstract/iEntity.core";
-import { iRepositoryBase } from "../iRepositoryBase";
+import { iRepositoryBaseNoSql } from "../iRepositoryBaseNosql";
+import mongoose from 'mongoose'
 
+export class MongoRepository<T extends iEntity> implements iRepositoryBaseNoSql<T>{
+    constructor(private conn: string){
+        var db = MongoContext.getInstance(this.conn);
+        db.connection();
+    }
 
-export class MongoRepository<T extends iEntity> implements iRepositoryBase<T>{
-    add(sql: any, entity: any): T {
-        throw new Error(sql);
+    add(collection: string, entity: T): T {
+        throw new Error("Method not implemented.");
     }
-    update(sql: any, entity: any): T {
-        throw new Error(sql);
+    update(collection: string, entity: T): T {
+        throw new Error("Method not implemented.");
     }
-    delete(sql: any, id: any): T {
-        throw new Error(sql);
+    delete(collection: string, id: string): T {
+        throw new Error("Method not implemented.");
     }
-    get(sql: any, param: any): T {
-        throw new Error(sql);
+    async get(collection: string, param: any): Promise<T> {
+        const result: T = await mongoose.model(collection, new mongoose.Schema<T>()).find(param)
+        return result;
     }
-    getAll(sql: any, param: ""): T[] {
-        throw new Error(sql);
-    }
+    async getAll(collection: string, param: any): Promise<T[]> {
+        const result: T[] = await mongoose.model(collection, new mongoose.Schema<T>()).aggregate(param)
+        return result;
+    }    
 }

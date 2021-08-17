@@ -1,9 +1,9 @@
 import { iEntity } from "../entity/abstract/iEntity.core";
 
 export interface iRepositoryBase<T extends iEntity> {
-    add(sql, entity): T;
-    update(sql, entity): T;
-    delete(sql, id): T;
-    get(sql, param): string;
-    getAll(sql, param: ''): Array<T>;
+  add(sql: string, entity: T): T;
+  update(sql: string, entity: T): T;
+  delete(sql: string, id: string): T;
+  get(sql: string, param: any): T;
+  getAll(sql: string, param: any): Array<T>;
 }

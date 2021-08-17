@@ -1,7 +1,7 @@
 import { CommonRouterConfig } from "./common";
 import express, {Request, Response} from 'express'
 import {LogController} from '../controllers/concrete/log.controller'
-import { LogDal } from "../data-access/concrete/log.dal";
+import { LogDal } from "../data-access/sql/concrete/log.dal";
 
 export class LogRouter extends CommonRouterConfig{
     constructor(app: express.Application){
