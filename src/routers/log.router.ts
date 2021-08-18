@@ -9,6 +9,12 @@ export class LogRouter extends CommonRouterConfig{
     }
 
     configureRoutes() {
+        this.app.route('/logs')
+        .get((req: Request, res: Response, next: express.NextFunction) => {
+            const cont = LogController.getInstance(new LogDal());
+            var result = cont.getAll(req, res, next)
+            res.send(result)
+        })
         this.app.route('/log')
         .get((req: Request, res: Response, next: express.NextFunction) => {
             const cont = LogController.getInstance(new LogDal());

@@ -16,7 +16,9 @@ export class LogController implements iLogService {
   }
 
   getAll(req: Request, res: Response, next: NextFunction): Log[] {
-    throw new Error("Method not implemented.");
+    var result: any[];
+    result = this.logdal.getAll("", "");
+    return result;
   }
   get(req: Request, res: Response, next: NextFunction): Log {
     var result: Log = new Log();

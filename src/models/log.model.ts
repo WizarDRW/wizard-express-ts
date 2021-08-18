@@ -15,15 +15,18 @@ export class Log extends Entity {
    */
   user: object;
 
-  bind(args: any) {
-    super.bindId(args["id"]);
-    this.date = args["date"];
-    this.content = args["content"];
-    this.user = args["user"];
-    return this;
+  bind(args: Log) {
+    var log = new Log();
+    log = args;
+    return log;
   }
 
-  public bindList(...args: object[]): object[] {
-    throw new Error("Method not implemented.");
+  bindList(...args: any[]): any[] {
+    var arr: any[] = [];
+    args.forEach((element) => {
+      var log = new Log();
+      arr.push((log = element));
+    });
+    return arr;
   }
 }

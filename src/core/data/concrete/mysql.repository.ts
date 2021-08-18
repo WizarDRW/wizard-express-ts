@@ -24,6 +24,7 @@ export class MySqlRepository<T extends iEntity> implements iRepositoryBase<T> {
     return res;
   }
   getAll(sql: any, param: ""): T[] {
-    throw new Error(sql);
+    var ad: T = this.data;
+    return ad.bindList({'id': '21', 'date': new Date(), 'content': 'Deneme', user: {'name': 'Nedim'}},{'id': '242141', 'date': new Date(), 'content': 'Deneme2', user: {'name': 'Burak'}})
   }
 }
