@@ -8,8 +8,4 @@ export class Entity implements iEntity {
     public set id(v: string) {
         this._id = v;
     }
-
-    constructor(id: string){
-        this.id = id;
-    }
 }

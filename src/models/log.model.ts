@@ -13,11 +13,4 @@ export class Log extends Entity {
      * İşlem yapan kullanıcı
      */
     user : object;
-
-    constructor(id: string, date: Date, content: string, user: object){
-        super(id);
-        this.date = date;
-        this.content = content;
-        this.user = user;
-    }
 }

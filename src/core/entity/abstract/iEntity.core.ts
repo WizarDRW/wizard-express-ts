@@ -1,1 +1,3 @@
-export interface iEntity{}
+export interface iEntity{
+    id: string;
+}

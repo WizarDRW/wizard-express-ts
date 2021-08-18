@@ -19,10 +19,7 @@ export class LogController implements iLogService {
     throw new Error("Method not implemented.");
   }
   get(req: Request, res: Response, next: NextFunction): Log {
-    var result: Log = new Log("1", new Date(), "", {
-      name: "Burak",
-      surname: "Ozkara",
-    });
+    var result: Log = new Log();
     result = this.logdal.get("", "");
     return result;
   }
