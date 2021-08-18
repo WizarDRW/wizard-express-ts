@@ -18,10 +18,10 @@ export class MySqlRepository<T extends iEntity> implements iRepositoryBase<T> {
   delete(sql: any, id: any): T {
     throw new Error(sql);
   }
-  get(sql: any, param: any): T {
+  get(sql: any, param: any): any {
     var ad: T = this.data;
-    ad.id = '12';
-    return ad;
+    var res = ad.bind({'id': '21', 'date': new Date(), 'content': 'Deneme', user: {'name': 'Nedim'}});
+    return res;
   }
   getAll(sql: any, param: ""): T[] {
     throw new Error(sql);
