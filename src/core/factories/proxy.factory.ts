@@ -1,10 +1,19 @@
-
-export interface NoParamConstractor<T>{
-    new(): T;
-  }
+export interface NoParamConstractor<T> {
+  new (): T;
+}
 
 export class Factory {
-  create<T>(type: new () => T): T {
-    return new type();
+  private static instance: Factory;
+
+  private constructor() {}
+
+  public static getInstance(): Factory {
+    if (!Factory.instance) Factory.instance = new Factory();
+
+    return Factory.instance;
+  }
+  create<T>(type: {new (...args: any[]): T}, ...ctrlArgs: any[]): T {
+    let obj = new type(...ctrlArgs)
+    return obj;
   }
 }
