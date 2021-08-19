@@ -20,11 +20,29 @@ export class MySqlRepository<T extends iEntity> implements iRepositoryBase<T> {
   }
   get(sql: any, param: any): any {
     var ad: T = this.data;
-    var res = ad.bind({'id': '21', 'date': new Date(), 'content': 'Deneme', user: {'name': 'Nedim'}});
+    var res = ad.bind({
+      id: "21",
+      date: new Date(),
+      content: "Deneme",
+      user: { name: "Nedim" },
+    });
     return res;
   }
   getAll(sql: any, param: ""): T[] {
     var ad: T = this.data;
-    return ad.bindList({'id': '21', 'date': new Date(), 'content': 'Deneme', user: {'name': 'Nedim'}},{'id': '242141', 'date': new Date(), 'content': 'Deneme2', user: {'name': 'Burak'}})
+    return ad.bindList(
+      {
+        id: "21",
+        date: new Date(),
+        content: "Deneme",
+        user: { name: "Nedim" },
+      },
+      {
+        id: "242141",
+        date: new Date(),
+        content: "Deneme2",
+        user: { name: "Burak" },
+      }
+    );
   }
 }
