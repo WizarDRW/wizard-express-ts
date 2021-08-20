@@ -17,12 +17,12 @@ export class LogController implements iLogService {
 
   getAll(req: Request, res: Response, next: NextFunction): Log[] {
     var result: any[];
-    result = this.logdal.getAll("", "");
+    result = this.logdal.getAll("select * from logs", "");
     return result;
   }
   get(req: Request, res: Response, next: NextFunction): Log {
     var result: Log = new Log();
-    result = this.logdal.get("", "");
+    result = this.logdal.get("select * from logs where id=21", "");
     return result;
   }
   add(req: Request, res: Response): Log {

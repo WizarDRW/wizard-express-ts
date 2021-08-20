@@ -18,12 +18,12 @@ export class MySqlRepository<T extends iEntity> implements iRepositoryBase<T> {
   delete(sql: any, id: any): T {
     throw new Error(sql);
   }
-  get(sql: any, param: any): any {
+  get(sql: string, param: any): any {
     var ad: T = this.data;
     var res = ad.bind({
       id: "21",
       date: new Date(),
-      content: "Deneme",
+      content: sql,
       user: { name: "Nedim" },
     });
     return res;
@@ -34,13 +34,13 @@ export class MySqlRepository<T extends iEntity> implements iRepositoryBase<T> {
       {
         id: "21",
         date: new Date(),
-        content: "Deneme",
+        content: sql,
         user: { name: "Nedim" },
       },
       {
         id: "242141",
         date: new Date(),
-        content: "Deneme2",
+        content: sql,
         user: { name: "Burak" },
       }
     );
