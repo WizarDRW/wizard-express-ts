@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "date": "02.07.1993",
+        "content": "deneme",
+        "user": {
+            "name": "Nedim"
+        }
+    },
+    {
+        "id": 2,
+        "date": "14.08.1992",
+        "content": "deneme",
+        "user": {
+            "name": "Maho"
+        }
+    }
+]

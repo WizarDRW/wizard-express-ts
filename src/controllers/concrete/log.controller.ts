@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { Log } from "../../models/log.model";
 import { iLogService } from "../abstract/iLog.controller";
 import { iLogDal } from "../../data-access/sql/abstract/iLog.dal";
+import { Datas } from "../../utils/fake-datas/index"
 
 export class LogController implements iLogService {
   private static instance: LogController;
@@ -17,7 +18,7 @@ export class LogController implements iLogService {
 
   getAll(req: Request, res: Response, next: NextFunction): Log[] {
     var result: any[];
-    result = this.logdal.getAll("select * from logs", "");
+    result = this.logdal.getAll(Datas.logs, "");
     return result;
   }
   get(req: Request, res: Response, next: NextFunction): Log {
