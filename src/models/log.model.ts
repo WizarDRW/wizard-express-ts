@@ -29,4 +29,8 @@ export class Log extends Entity {
     });
     return arr;
   }
+
+  public findId(expression: (this: void, value: Log, index: number, obj: Log[]) => object, ...args: Log[]): object {
+    return args.find(expression);
+  }
 }

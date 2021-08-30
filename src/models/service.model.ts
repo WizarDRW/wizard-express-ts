@@ -19,4 +19,7 @@ export class Service extends Entity {
     });
     return arr;
   }
+  public findId(expression: Function, ...args: Service[]): object {
+    throw new Error("Method not implemented.");
+  }
 }

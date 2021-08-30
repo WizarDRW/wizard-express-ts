@@ -10,11 +10,18 @@ export class MySqlRepository<T extends iEntity> implements iRepositoryBase<T> {
     this.data = new ctor();
   }
 
-  add(sql: any, entity: any): T {
-    throw new Error(sql);
+  add(sql: any, entity: T): T {
+    var ad: T = this.data;
+    var res = ad.bind(sql);
+    var push = ad.bindList(sql);
+    push.push(res);
+    return entity;
   }
   update(sql: any, entity: any): T {
-    throw new Error(sql);
+    var ad: T = this.data;
+    var res = ad.bindList(sql);
+    res.push(entity);
+    return entity;
   }
   delete(sql: any, id: any): T {
     throw new Error(sql);
